@@ -24,12 +24,17 @@ const initialValue = {
   permitted_to_mine:'',
   permitted_to_transport:'',
   author_signature:'',
-  Village_officer_Approved:''
+  Village_officer_Approved:'',
+  pickerTransportDate:'',
+  pickerTransportStart:'',
+  pickerTransportEnd:''
 }
 
 const Sgsoil = () => {
   const [sgsoil, setSgsoil] = useState(initialValue);
-  const [picker, setPicker] = useState(new Date());
+  const [pickerTransportDate, setPickerTransportDate] = useState(new Date());
+  const [pickerTransportStart, setPickerTransportStart] = useState(new Date());
+  const [pickerTransportEnd, setPickerTransportEnd] = useState(new Date());
   const [qrcode, useqrcode] = useState("");
   const [title, setTitle] = useState('');
   const [dateStart, setDateStart] = useState('');
@@ -61,25 +66,25 @@ const Sgsoil = () => {
         <CardBody>
         <CardText>Form</CardText>
         <Label>Name of The licener</Label>
-        <Input placeholder="Name of the licener" type="text" value={nameofl} onChange={(e) => onValueChange(e)}/>
+        <Input placeholder="Name of the licener" type="text" value={nameofl} name="nameofl" onChange={(e) => onValueChange(e)}/>
         <Label>National Identity Card</Label>
-        <Input placeholder="National Identity Card"  type="text" value={N_id} onChange={(e) => onValueChange(e)}/>
+        <Input placeholder="National Identity Card"  type="text" value={N_id} name="N_id" onChange={(e) => onValueChange(e)}/>
          <Label>Address</Label>
-         <Input type="textarea" placeholder="Address"  value={address} onChange={(e) => onValueChange(e)}/>
+         <Input type="textarea" placeholder="Address"  value={address} name="address" onChange={(e) => onValueChange(e)}/>
          <Label>ZipCode</Label>
-         <Input type="zipcode" placeholder="zipcode"  value={zipcode} onChange={(e) => onValueChange(e)}/>
+         <Input type="zipcode" placeholder="zipcode"  value={zipcode} name="zipcode" onChange={(e) => onValueChange(e)}/>
          <Label>District</Label>
-         <Input type="text" placeholder="District"  value={district} onChange={(e) => onValueChange(e)}/>
+         <Input type="text" placeholder="District"  value={district} name="district" onChange={(e) => onValueChange(e)}/>
          <Label>Divisional Secetriate</Label>
-         <Input type="text" placeholder="Divisional Secetriate" value={divsect} onChange={(e) => onValueChange(e)}/>
+         <Input type="text" placeholder="Divisional Secetriate" value={divsect} name="divsect" onChange={(e) => onValueChange(e)}/>
          <Label>Grama Seva Division</Label>
-         <Input type="text" placeholder="Grama Seva Division" value={gdiv} onChange={(e) => onValueChange(e)}/>
+         <Input type="text" placeholder="Grama Seva Division" value={gdiv} name="gdiv" onChange={(e) => onValueChange(e)}/>
          <Label>Where Extracted</Label>
-         <Input type="text" placeholder="where extracted" value={where_extracted} onChange={(e) => onValueChange(e)}/>
+         <Input type="text" placeholder="where extracted" value={where_extracted} name="where_extracted" onChange={(e) => onValueChange(e)}/>
               <Label for='type_of_Mineral'>
                 Type Of Mineral
               </Label>
-              <Input id='type_of_Mineral' placeholder='type of Mineral' type="text" className='form-control' value={typeofmineral} onChange={(e) => onValueChange(e)}/>
+              <Input id='type_of_Mineral' placeholder='type of Mineral' type="text" className='form-control' name="typeofmineral" value={typeofmineral} onChange={(e) => onValueChange(e)}/>
               <Label for='Vehicle_No_Plate_ID'>
                 Vehicle No Plate ID
               </Label>
@@ -89,16 +94,17 @@ const Sgsoil = () => {
                 placeholder='CP LA-XXXX'
                 className='form-control'
                 value={vehicle_no_plate_id}
+                name="vehicle_no_plate_id"
                 onChange={(e) => onValueChange(e)}
               />
               <Label  for='quantity_cubes'>
                 Quantity_Cubes
               </Label>
-              <Input id='quantity_cubes' placeholder='Quantity Cubes' text="text" className='form-control' value={quantity_cubes} onChange={(e) => onValueChange(e)}/>
+              <Input id='quantity_cubes' placeholder='Quantity Cubes' text="text" className='form-control' name="quantity_cubes" value={quantity_cubes} onChange={(e) => onValueChange(e)}/>
               <Label  for='destination'>
                 Destination
               </Label>
-              <Input id='Destination' placeholder='Destination' text="text" className='form-control' value={destination} onChange={(e) => onValueChange(e)}/>
+              <Input id='Destination' placeholder='Destination' text="text" className='form-control' name="destination" value={destination} onChange={(e) => onValueChange(e)}/>
               <Label  for='reason'>
                 Reason
               </Label>
@@ -108,57 +114,16 @@ const Sgsoil = () => {
                 placeholder="Reason"
                 className='form-control'
                 value={reason}
+                name="reason"
                 onChange={(e) => onValueChange(e)}
               />
-              
-              <Label for='switch-primary' className='form-check-label mb-50'>
-              Permitted To Mine
-            </Label>
-            <div className='form-switch form-check-primary'>
-              <Input type='switch' id='switch-primary' name='Permitted_To_Mine' defaultChecked className='form-control' value={permitted_to_mine} onChange={(e) => onValueChange(e)} />
-            </div>
-            <Fragment>
-            <Col lg='4' md='6' className='mb-1'>
-              <Label className='form-label' for='date-time-picker'>
-              Permitted TO Mine Date
-            </Label>
-            <Flatpickr
-              value={picker}
-              data-enable-time
-              id='date-picker'
-              className='form-control'
-              onChange={date => setPicker(date)}
-                           />
-            </Col>
-            </Fragment>
-            <Fragment>
-            <Label className='form-label' for='date-time-picker'>
-        Permitted To Mine Start
-      </Label>
-      <Flatpickr
-        value={picker}
-        data-enable-time
-        id='date-time-picker'
-        className='form-control'
-        onChange={date => setPicker(date)}/>
-        </Fragment>
-        <Fragment>
-      <Label className='form-label' for='date-time-picker'>
-        Permitted To Mine End
-      </Label>
-      <Flatpickr
-        value={picker}
-        data-enable-time
-        id='date-time-picker'
-        className='form-control'
-        onChange={date => setPicker(date)} />
-             </Fragment>   
+           
              
-              <Label for='switch-primary' className='form-check-label mb-50'>
+            <Label for='switch-primary' className='form-check-label mb-50'>
               Permitted To Transport
             </Label>
             <div className='form-switch form-check-primary'>
-              <Input type='switch' id='switch-primary' name='Permitted_To_Transport' defaultChecked value={permitted_to_transport} onChange={(e) => onValueChange(e)}/>
+              <Input type='switch' id='switch-primary'  defaultChecked value={permitted_to_transport} name="permitted_to_transport" onChange={(e) => onValueChange(e)}/>
             </div>
             <Fragment>
             <Col lg='4' md='6' className='mb-1'>
@@ -166,11 +131,12 @@ const Sgsoil = () => {
               Permitted TO Transport Date
             </Label>
             <Flatpickr
-              value={picker}
+              value={pickerTransportDate}
+              name="pickerTransportDate"
               data-enable-time
               id='date-picker'
               className='form-control'
-              onChange={date => setPicker(date)}/>
+              onChange={date => setPickerTransportDate(date)}/>
             </Col>
             </Fragment>
             <Fragment>
@@ -178,28 +144,30 @@ const Sgsoil = () => {
         Permitted To Transport Start
       </Label>
       <Flatpickr
-        value={picker}
+        value={pickerTransportStart}
+        name="pickerTransportStart"
         data-enable-time
         id='date-time-picker'
         className='form-control'
-        onChange={date => setPicker(date)}/>
+        onChange={date => setPickerTransportStart(date)}/>
         </Fragment>
         <Fragment>
       <Label className='form-label' for='date-time-picker'>
         Permitted To Transport End
       </Label>
       <Flatpickr
-        value={picker}
+        value={pickerTransportEnd}
+        name="pickerTransportEnd"
         data-enable-time
         id='date-time-picker'
         className='form-control'
-        onChange={date => setPicker(date)} />
+        onChange={date => setPickerTransportEnd(date)} />
         </Fragment> 
         <Label className='form-label' for='sig-and-seat-ofauthorized-officer'>
         Signature and Seat of Authorized Officer
       </Label>
       <div className='form-switch form-check-primary'>
-      <Input type='switch' id='switch-primary' name='Signature_and_seat_of_authorized_officer' defaultChecked value={author_signature} onChange={(e) => onValueChange(e)}/>
+      <Input type='switch' id='switch-primary' name='Signature_and_seat_of_authorized_officer' defaultChecked value={author_signature} name="author_signature" onChange={(e) => onValueChange(e)}/>
     </div>  
     <Label className='form-label' for='sig-and-seat-ofauthorized-officer'>
         Village Officer Approved
