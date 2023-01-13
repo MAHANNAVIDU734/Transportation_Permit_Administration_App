@@ -1,4 +1,4 @@
-import { Mail, Home } from 'react-feather'
+import { Mail, Home, truck, user, trello } from 'react-feather'
 
 export default [
   {
@@ -10,19 +10,19 @@ export default [
     {
         id: 'sgsoil',
         title: 'Sand & Soil',
-        icon: <Mail size = { 20 }/>,
+        icon: <truck size = { 20 }/>,
         navLink: '/sgsoil'
     },
     {
       id: 'timwood',
       title: 'Timber & Wood',
-      icon: <Mail size = { 20 }/>,
+      icon: <truck size = { 20 }/>,
       navLink: '/timwood'
   },
   {
     id: 'divsect',
     title: 'Divisional Secretary',
-    icon: <Mail size = { 20 }/>,
+    icon: <trello size = { 20 }/>,
     navLink: '/divsect'
 },
 {
@@ -34,7 +34,7 @@ export default [
 {
   id: 'users',
   title: 'Users',
-  icon: <Mail size = { 20 }/>,
+  icon: <user size = { 20 }/>,
   navLink: '/users'
 }
 ]
