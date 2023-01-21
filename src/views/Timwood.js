@@ -58,17 +58,6 @@ const onAddQRCode = (e) => {
               Deed Number
               </Label>
               <Input id='deed_number' placeholder='Deed Number' type="text" className='form-control'/>
-              <Fragment>
-              <Label for='Date_of_registration'>
-                Date of Registration
-              </Label>
-              <Flatpickr
-        value={picker}
-        data-enable-time
-        id='date-picker'
-        className='form-control'
-        onChange={date => setPicker(date)} />
-        </Fragment> 
 
               <Label  for='Boundary_of_Lands_North'>
               Boundary_of_Lands_North
@@ -100,47 +89,7 @@ const onAddQRCode = (e) => {
                 className='form-control'
               />
               
-              <Label for='switch-primary' className='form-check-label mb-50'>
-              Permitted To Mine
-            </Label>
-            <div className='form-switch form-check-primary'>
-              <Input type='switch' id='switch-primary' name='Permitted_To_Mine' defaultChecked className='form-control' />
-            </div>
-            <Fragment>
-            <Col lg='4' md='6' className='mb-1'>
-              <Label className='form-label' for='date-time-picker'>
-              Permitted TO Mine Date
-            </Label>
-            <Flatpickr
-              value={picker}
-              data-enable-time
-              id='date-picker'
-              className='form-control'
-              onChange={date => setPicker(date)}/>
-            </Col>
-            </Fragment>
-            <Fragment>
-            <Label className='form-label' for='date-time-picker'>
-        Permitted To Mine Start
-      </Label>
-      <Flatpickr
-        value={picker}
-        data-enable-time
-        id='date-time-picker'
-        className='form-control'
-        onChange={date => setPicker(date)}/>
-        </Fragment>
-        <Fragment>
-      <Label className='form-label' for='date-time-picker'>
-        Permitted To Mine End
-      </Label>
-      <Flatpickr
-        value={picker}
-        data-enable-time
-        id='date-time-picker'
-        className='form-control'
-        onChange={date => setPicker(date)} />
-             </Fragment>   
+              
              
               <Label for='switch-primary' className='form-check-label mb-50'>
               Permitted To Transport
@@ -154,11 +103,11 @@ const onAddQRCode = (e) => {
               Permitted TO Transport Date
             </Label>
             <Flatpickr
-              value={picker}
+              value={pickerTransportDate}
               data-enable-time
               id='date-picker'
               className='form-control'
-              onChange={date => setPicker(date)}/>
+              onChange={date => setPickerTransportDate(date)}/>
             </Col>
             </Fragment>
             <Fragment>
@@ -166,22 +115,22 @@ const onAddQRCode = (e) => {
         Permitted To Transport Start
       </Label>
       <Flatpickr
-        value={picker}
+        value={pickerTransportStart}
         data-enable-time
         id='date-time-picker'
         className='form-control'
-        onChange={date => setPicker(date)}/>
+        onChange={date =>  setPickerTransportStart(date)}/>
         </Fragment>
         <Fragment>
       <Label className='form-label' for='date-time-picker'>
         Permitted To Transport End
       </Label>
       <Flatpickr
-        value={picker}
+        value={pickerTransportEnd}
         data-enable-time
         id='date-time-picker'
         className='form-control'
-        onChange={date => setPicker(date)} />
+        onChange={date => setPickerTransportEnd(date)} />
         </Fragment> 
         <Label className='form-label' for='sig-and-seat-ofauthorized-officer'>
         Signature and Seat of Authorized Officer
